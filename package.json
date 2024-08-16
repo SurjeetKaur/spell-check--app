@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +14,7 @@
     "axios": "^1.7.3",
     "express": "^4.19.2",
     "hbs": "^4.2.0",
-    "postman-request": "^2.88.1-postman.33"
+    "postman-request": "^2.88.1-postman.33",
+    "web-server-app-v2": "file:"
   }
 }

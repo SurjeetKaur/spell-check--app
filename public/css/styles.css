@@ -32,7 +32,7 @@ header a {
     background-color:rgb(188, 201, 241); 
     font-size: 20px;
     padding: 5px;  
-    border-bottom: 2px solid black;
+    border: 3px solid black;
     border-radius: 10px;
 }
 
@@ -46,6 +46,7 @@ header a:hover{
 .main-content {
     flex-grow: 1;
     text-align:center;
+
 }
 
 .home{
