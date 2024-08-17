@@ -5,7 +5,7 @@ const spellcheck = require('./utils/spellcheck');// imported the function
 
 //port: 4000
 const app = express();
-const port = process.env.port || 4000;
+const port = process.env.port || 8080;
 app.use(express.json());
 
 // Define paths for Express (templates)
