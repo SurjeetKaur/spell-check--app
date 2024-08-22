@@ -6,7 +6,24 @@ const resultDiv = document.getElementById('result');
 checkSpellingButton.addEventListener('click', (e) => {
     e.preventDefault();
     const text = inputText.value.trim(); //extract input :trim removes whitespace characters from input string
-    if (text) {
+
+    fetch("spellcheck?text="+ encodeURIComponent(text)).then((response)=>{
+        response.json().then(data => {
+            if(data.error){
+                resultDiv.textContent=data.error;
+            } else{
+                resultDiv.textContent = "processing.....";
+                /*const correctedText = replaceWithBestCandidate(data);*/
+                resultDiv.textContent = `Corrected text: ${data.correctedText}`;
+
+            }
+        });
+    });
+});   
+
+
+// code  for post method
+    /*if (text) {
         fetch('/spellcheck', {
             method: 'POST',
             headers: {
@@ -26,17 +43,9 @@ checkSpellingButton.addEventListener('click', (e) => {
     } else {
         resultDiv.textContent = 'Please enter some text';
     }
-});
+}); */
 
-// spellcheck function to update data after correcting it
-function replaceWithBestCandidate(data) {
-    let updatedText = data.original_text;
 
-    data.corrections.forEach(correction => {
-        const { text, best_candidate } = correction;
-        updatedText = updatedText.replace(text, best_candidate);
-    });
 
-    return updatedText;
-}
+
 

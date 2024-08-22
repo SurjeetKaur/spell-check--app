@@ -1,14 +1,15 @@
 body {
-    color:white;
+    color:black;
     font-family: arial;
     max-width: 700px;
     margin: 0 auto;
-    /*padding: 0 16px;*/
-    display: flex;
-   flex-direction: column;
-    /*min-height: 100vh;*/
-    background: linear-gradient(112.1deg, rgb(32, 38, 57) 11.4%, rgb(63, 76, 119) 70.2%);
-    
+    padding: 0 16px;
+    /*display: flex;
+    flex-direction: column;*/
+    background: linear-gradient(to bottom, #f7f7f7, #e7e7e7);
+    background-size: cover;
+    background-attachment: fixed;
+    height:auto;
 }
 
 
@@ -22,31 +23,34 @@ header {
 h1 {
     font-size: 60px;
     margin-bottom: 30px;
-    color:aqua;
+    color: #337ab7;
 }
 
 header a {
-    color:black;
+    
+    color: #337ab7;
     margin-right: 16px;
     text-decoration: none;
-    background-color:rgb(188, 201, 241); 
+    background-color: #f7f7f7;
     font-size: 20px;
     padding: 5px;  
-    border: 3px solid black;
+    border: 3px solid #337ab7;
     border-radius: 10px;
 }
 
 header a:hover{
-    background-color: beige;   
+    background-color:#87CEEB;
+    color:black;   
 }
 
 
 
 /* index*/
 .main-content {
-    flex-grow: 1;
     text-align:center;
-
+    min-height:0;
+    overflow-y:auto;
+    flex-grow:1;
 }
 
 .home{
@@ -60,7 +64,7 @@ header a:hover{
     margin-bottom:20px;
 }
 .index-form{
-    background-color:rgb(180, 240, 240);;
+    background-color:#337ab7 ;
     padding :20px;
     width: auto;
     text-align:center;
@@ -72,7 +76,7 @@ header a:hover{
 .index-form button {
     cursor: pointer;
     border: 1px solid black;
-    background-color:forestgreen;
+    background-color:rgb(32, 209, 32);
     color: white;
     padding: 8px; 
     width:200px; 
@@ -90,8 +94,7 @@ header a:hover{
 
 #about-img{
     width: 200px;
-    height: 250px;
-    float:left;
+    height: 200px;
 }
 .about-text {
     flex: 1;
@@ -102,10 +105,11 @@ header a:hover{
 
 /*help*/
 .help{
-    background-color:rgb(21, 21, 22) ;
+    background-color: #337ab7 ;
     padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
+    color:white;
 
 }
 .help ol{
@@ -114,7 +118,7 @@ header a:hover{
 }
 
 .help a{
-    color:skyblue;
+    color:black;
 }
 
 
@@ -122,7 +126,7 @@ header a:hover{
 
 /* footer*/
 footer {
-    color:white;
+    color:black;
     border-top: 1px solid #0a0a0a;
     margin-top: 16px;
     padding: 16px 0;

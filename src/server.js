@@ -3,7 +3,7 @@ const express=require('express');
 const hbs = require("hbs");
 const spellcheck = require('./utils/spellcheck');// imported the function
 
-//port: 4000
+//port: 8080
 const app = express();
 const port = process.env.port || 8080;
 app.use(express.json());
@@ -24,34 +24,50 @@ app.use(express.static(publicDirectoryPath));
 //const text = "thisss is Surjeet Kaur";
 //console.log("Input text:",text);
 
-app.get("/", (req, res) => {
+app.get("", (req, res) => {
   res.render("index", {
     title: "SpellSavvy",
     name: "Surjeet kaur",
   });
 });
 
-// spellcheck for form
-app.post('/spellcheck', (req, res) => {
-  const text = req.body.text;
-spellcheck(text, (error, data) => {
-  if (error) {
-    //console.error('Error:', error);
-    res.status(500).json({ error: 'Unable to check spelling' });
-  } else {
-    // Now you have the response data from the API in 'data'
-    res.json(data);
-    //const correctedText = replaceWithBestCandidate(data);
-    //console.log("corrected text:",correctedText);
+// spellcheck for input
+  app.get('/spellcheck/',(req,res)=>{
+  if(!req.query.text){
+    console.log('req.query is empty!');
+     return res.status(400).send({error: 'Please provide text for spellcheck!'});
   }
-});
-});
+  const text = req.query.text;
+  //console.log('text:',text);
+    spellcheck(text, (error, data) => {
+    if (error) {
+    console.error('spellcheck API error', error);
+    res.status(500).json({ error: 'Unable to check spelling due to API error' });
+    } else {
+      //console.log(data);
+    const correctedText = replaceWithBestCandidate(data);// Now you have the response data from the API in 'data'
+    res.json({correctedText});
+    //console.log("corrected text:",correctedText);  
+    }  
+  });
+  });
+
+// function to replace text with best candidate
+function replaceWithBestCandidate(data) {
+  let updatedText = data.original_text;
+
+  data.corrections.forEach(correction => {
+      const { text, best_candidate } = correction;
+      updatedText = updatedText.replace(text, best_candidate);
+  });
+  return updatedText;
+}
 
 //about page
 app.get("/about", (req, res) => {
   res.render("about", {
     title: "About Us",
-    paraContent:"we believe that everyone deserves to express themselves with clarity and precision. That's why we've created a powerful spell checking tool that helps you identify and correct mistakes in real-time. Our team is dedicated to continuously improving our algorithm to ensure that you receive the most accurate results possible.",
+    paraContent:"We believe that everyone deserves to express themselves with clarity and precision. That's why we've created a powerful spell checking tool that helps you identify and correct mistakes in real-time. Our team is dedicated to continuously improving our algorithm to ensure that you receive the most accurate results possible.",
     name: "Surjeet kaur",
   });
 });
@@ -83,18 +99,7 @@ app.get("*", (req, res) => {
   });
 });
 
-// Function to replace text with best_candidate
-/*function replaceWithBestCandidate(data) {
-    let updatedText = data.original_text;
-  
-    data.corrections.forEach(correction => {
-      const { text, best_candidate } = correction;
-      // Replace the text with the best_candidate
-      updatedText = updatedText.replace(text, best_candidate);
-    });
-  
-    return updatedText;
-}*/
+
 
 //port
 app.listen(port,()=>{
