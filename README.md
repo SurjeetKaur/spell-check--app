@@ -74,28 +74,44 @@ node_modules/: This directory contains dependencies installed via npm (Node Pack
 
 
 public/: This directory contains static assets that can be accessed directly by the web server.
+
 public/css: This directory contains CSS (Cascading Style Sheets) files used for styling the application.
+
 public/js: This directory contains JavaScript files used for client-side scripting.
+
 public/js/app.js: This is the main JavaScript file for the application, containing code for handling user interactions, making API requests, and updating the UI.
+
 public/img: This directory contains image files used in the application.
 
 
 src/: This directory contains the source code for the application.
+
 src/server.js: This is the main server file, responsible for setting up the Express.js server, defining routes, and handling requests.
+
 src/utils/spellcheck.js: This file contains a utility function for spell-checking text.
 
 
 templates/: This directory contains Handlebars templates used for rendering dynamic content.
+
 templates/partials/: This directory contains partial templates that can be reused throughout the application.
+
 templates/partials/footer.hbs: This is the footer template, containing HTML and Handlebars expressions for rendering the footer section.
+
 templates/partials/header.hbs: This is the header template, containing HTML and Handlebars expressions for rendering the header section.
+
 templates/views/: This directory contains view templates that define the structure and content of individual pages.
+
 templates/views/404.hbs: This is the 404 error template, displayed when a user requests a non-existent page.
+
 templates/views/about.hbs: This is the about template, containing information about the application.
+
 templates/views/help.hbs: This is the help template, containing instructions and support information.
+
 templates/views/index.hbs: This is the index template, serving as the main entry point for the application.
 
+
 .gitignore: This file specifies files and directories that should be ignored by Git, preventing them from being committed to the repository.
+
 
 app.yaml: This file contains configuration settings for the application, such as environment variables, API keys, and other settings.
 
